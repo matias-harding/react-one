@@ -39,7 +39,6 @@ class App extends Component {
   }
 
   render() {
-    // JS styleMe Object
     const styleMe = {
       backgroundColor: 'white',
       font: 'inherit',
@@ -76,7 +75,6 @@ class App extends Component {
         }
       </div>
     );
-    // return React.createElement('div',{className: 'App'},React.createElement('h1',null,'I\'m a title'));
   }
 }
 
