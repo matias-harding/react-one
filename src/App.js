@@ -9,7 +9,8 @@ class App extends Component {
       {name: 'Matt', age: 36},
       {name: 'Alejandro', age: 44}
     ],
-    otherState: 'some other value'
+    otherState: 'some other value',
+    showPersons: false
   }
 
   switchNameHandler = (newName) => {
@@ -32,6 +33,11 @@ class App extends Component {
     });
   }
 
+  togglePersonHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons: !doesShow});
+  }
+
   render() {
     // JS styleMe Object
     const styleMe = {
@@ -49,19 +55,25 @@ class App extends Component {
         <p>Esto es su parrafo</p>
         <button 
         style={styleMe} 
-        onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Tú, lo PISAS!</button>
-        <Person 
-          name={this.state.persons[0].name} 
-          age={this.state.persons[0].age} />
-        <Person 
-          name={this.state.persons[1].name} 
-          age={this.state.persons[1].age} 
-          click={this.switchNameHandler.bind(this, 'Matts!!')} 
-          changed={this.nameChangedHandler} 
-          > My hobbies: Aviador</Person>
-        <Person 
-          name={this.state.persons[2].name} 
-          age={this.state.persons[2].age} />
+        onClick={this.togglePersonHandler}>Muestra!</button>
+        { this.state.showPersons ? 
+          <div >
+            <Person 
+              name={this.state.persons[0].name} 
+              age={this.state.persons[0].age} />
+            <Person 
+              name={this.state.persons[1].name} 
+              age={this.state.persons[1].age} 
+              click={this.switchNameHandler.bind(this, 'Matts!!')} 
+              changed={this.nameChangedHandler} 
+              > My hobbies: Aviador</Person>
+            <Person 
+              name={this.state.persons[2].name} 
+              age={this.state.persons[2].age} />
+          </div>
+          :
+          null
+        }
       </div>
     );
     // return React.createElement('div',{className: 'App'},React.createElement('h1',null,'I\'m a title'));
