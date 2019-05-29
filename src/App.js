@@ -33,11 +33,23 @@ class App extends Component {
   }
 
   render() {
+    // JS styleMe Object
+    const styleMe = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer',
+      boxShadow: '0 2px 3px #ccc'
+    };
+
     return (
       <div className="App">
         <h1>Holanda</h1>
         <p>Esto es su parrafo</p>
-        <button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Tú, lo PISAS!</button>
+        <button 
+        style={styleMe} 
+        onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Tú, lo PISAS!</button>
         <Person 
           name={this.state.persons[0].name} 
           age={this.state.persons[0].age} />
