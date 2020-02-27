@@ -4,14 +4,14 @@ import styled from 'styled-components';
 import Person from './Person/Person';
 
 const StyledButton = styled.button`
-  background-color: green;
+  background-color: ${ props => props.alt ? 'red' : 'green' };
   color: white;
   font: inherit;
   border: 1px solid blue;
   padding: 8px;
   cursor: pointer;
   &:hover {
-    background-color: lightgreen;
+    background-color: ${ props => props.alt ? 'salmon' : 'lightgreen' };
     color: black
   }
 `;
@@ -19,9 +19,9 @@ const StyledButton = styled.button`
 class App extends Component {
   state = {
     persons: [
-      { name: 'Max', age: 28 },
-      { name: 'Matias', age: 29 },
-      { name: 'Andres', age: 26 }
+      { key: '1', name: 'Max', age: 28 },
+      { key: '2', name: 'Matias', age: 29 },
+      { key: '3', name: 'Andres', age: 26 }
     ],
     otherState: 'some other value',
     showPersons: false
@@ -73,11 +73,6 @@ class App extends Component {
         </div>
       );
 
-      // style.backgroundColor = 'red';
-      // style[':hover'] = {
-      //   backgroundColor: 'salmon',
-      //   color: 'black'
-      // };
     }
 
     const classes = [];
@@ -92,8 +87,7 @@ class App extends Component {
         <div className="App">
           <h1>Su app</h1>
           <p className={classes.join( ' ' )}>en React!</p>
-          <StyledButton
-            onClick={this.togglePersonsHandler}>
+          <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}>
             Clickea!
           </StyledButton>
           {persons}
