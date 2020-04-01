@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './App.module.css';
 // import Person from '../components/Persons/Person/Person';
 import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 
 class App extends Component {
@@ -47,37 +48,21 @@ class App extends Component {
 
     let persons = null;
 
-    let btnClass = [classes.Button];
-
     if ( this.state.showPersons ) {
-      persons = (
-        <div>
-          <Persons
+      persons = <Persons
             persons = {this.state.persons}
             clicked = {this.deletePersonHandler}
             changed = {this.nameChangedHandler}
-          />
-        </div>
-      );
-
-      btnClass.push(classes.Red);
-    }
-
-    const assignedClasses = [];
-    if ( this.state.persons.length <= 2 ) {
-      assignedClasses.push( 'red' ); // classes = ['red']
-    }
-    if ( this.state.persons.length <= 1 ) {
-      assignedClasses.push( 'bold' ); // classes = ['red', 'bold']
+          />;
     }
 
     return (
         <div className={classes.App}>
-          <h1>Su app</h1>
-          <p className={assignedClasses.join( ' ' )}>en React!</p>
-          <button className={btnClass.join(' ')} onClick={this.togglePersonsHandler}>
-            Clickea!
-          </button>
+          <Cockpit
+            showPersons = {this.state.showPersons}
+            persons = {this.state.persons}
+            clicked = {this.togglePersonsHandler}
+          />
           {persons}
         </div>
     );
