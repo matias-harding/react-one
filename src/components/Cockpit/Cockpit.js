@@ -4,21 +4,20 @@ import classes from './Cockpit.module.css';
 const cockpit = (props) => {
 
     useEffect(() => {
-        console.log("cockpit -> useEffect");
+        console.log("[cockpit.js] -> useEffect");
         //HTTTP request...
-        const timer = setTimeout(() => {
+        setTimeout(() => {
             alert('saved Data to Cloud!');
         },1000);
         return () => {
-            clearTimeout(timer);
-            console.log("cockpit -> cleanup in useEffect");
+            console.log("[cockpit.js] -> cleanup in useEffect");
         }
     }, []);
 
     useEffect(() => {
-        console.log("cockpit -> 2nd useEffect");
+        console.log("[cockpit.js] -> 2nd useEffect");
         return () => {
-            console.log("cockpit -> cleanup in 2nd useEffect");
+            console.log("[cockpit.js] -> cleanup in 2nd useEffect");
         }
     });
 

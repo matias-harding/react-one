@@ -44,7 +44,7 @@ class App extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        console.log("App -> shouldComponentUpdate");
+        console.log("[App.js] -> shouldComponentUpdate");
         return true;
     }
     
@@ -57,12 +57,14 @@ class App extends Component {
         return p.id === id;
         } );
 
+        //Proper object update. 
         const person = {
-        ...this.state.persons[personIndex]
+            ...this.state.persons[personIndex]
         };
 
         person.name = event.target.value;
 
+        //Proper array update. 
         const persons = [...this.state.persons];
         persons[personIndex] = person;
 

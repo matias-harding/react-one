@@ -9,8 +9,14 @@ class Persons extends Component {
     // }
 
     shouldComponentUpdate(nextProps, nextState){
-        console.log("Persons -> shouldComponentUpdate");
-        return true;
+        console.log("[Persons.js] -> shouldComponentUpdate");
+        // "nextProps.persons !== this.props.persons" deep comparison thanks to object initialized in App.js
+        if(nextProps.persons !== this.props.persons){
+            
+            return true;
+        }else{
+            return false;
+        }
     }
 
     // componentWillUpdate() {
@@ -18,16 +24,16 @@ class Persons extends Component {
     // }
 
     componentWillUnmount(){
-        console.log("Persons -> componentWillUnmount");
+        console.log("[Persons.js] -> componentWillUnmount");
     }
 
     getSnapshotBeforeUpdate(prevProps, prevState){
-        console.log("Persons -> getSnapshotBeforeUpdate ");
+        console.log("[Persons.js] -> getSnapshotBeforeUpdate ");
         return {message: 'Snapshot!'};
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log("Persons -> componentDidUpdate");
+        console.log("[Persons.js] -> componentDidUpdate");
         console.log(snapshot);
     }
 
