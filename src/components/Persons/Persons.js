@@ -13,6 +13,14 @@ class Persons extends Component {
         return true;
     }
 
+    // componentWillUpdate() {
+    // Not in use.
+    // }
+
+    componentWillUnmount(){
+        console.log("Persons -> componentWillUnmount");
+    }
+
     getSnapshotBeforeUpdate(prevProps, prevState){
         console.log("Persons -> getSnapshotBeforeUpdate ");
         return {message: 'Snapshot!'};

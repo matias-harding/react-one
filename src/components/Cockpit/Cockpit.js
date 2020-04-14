@@ -6,10 +6,21 @@ const cockpit = (props) => {
     useEffect(() => {
         console.log("cockpit -> useEffect");
         //HTTTP request...
-        setTimeout(() => {
+        const timer = setTimeout(() => {
             alert('saved Data to Cloud!');
         },1000);
+        return () => {
+            clearTimeout(timer);
+            console.log("cockpit -> cleanup in useEffect");
+        }
     }, []);
+
+    useEffect(() => {
+        console.log("cockpit -> 2nd useEffect");
+        return () => {
+            console.log("cockpit -> cleanup in 2nd useEffect");
+        }
+    });
 
     const assignedClasses = [];
     // let btnClass = '';
